@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts SYSTEM "../struts-2.3.dtd" >
+
+<struts>
+	<!-- 国际化的编码方式 -->
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<!-- struts2的属性文件的位置，在src目录下 -->
+	<constant name="struts.custom.i18n.resources" value="Message"></constant>
+
+	<package name="default" extends="struts-default">
+		<!-- 用户登录 -->
+		<action name="login" class="com.demo.actions.LoginAction"
+			method="login">
+			<result name="success">/pages/product/productAdd.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<!-- 添加产品信息 -->
+		<action name="addProduct" class="com.demo.actions.AddProductAction">
+			<result name="success">/pages/product/productAdd.jsp</result>
+			<result name="input">/pages/product/productAdd.jsp</result>
+		</action>
+
+		<!-- 删除产品信息 -->
+		<action name="deleteProduct" class="com.demo.actions.DeleteProductAction">
+			<result name="success" type="redirectAction">pages/proudct/getAllProduct</result>
+			<result name="input" type="redirectAction">pages/product/getAllProduct</result>
+		</action>
+
+		<!-- 根据产品名称查询产品信息 -->
+		<action name="select" class="com.demo.actions.SelectProductAction">
+			<result name="success">/pages/product/productModify.jsp</result>
+		</action>
+
+		<!-- Modify页获取所有产品信息，未分页 -->
+		<action name="getAllProduct" class="com.demo.actions.GetAllProductAction">
+			<result name="success">/pages/product/productModify.jsp</result>
+		</action>
+
+		<!-- Select页获取所有产品信息，未分页 -->
+		<action name="getAllProduct1" class="com.demo.actions.GetAllProductAction">
+			<result name="success">/pages/product/productSelect.jsp</result>
+		</action>
+
+		<!-- 订单页中获取所有产品信息 -->
+		<action name="getProductInOrderAdd" class="com.demo.actions.GetAllProductAction">
+			<result name="success">/pages/order/orderAdd.jsp</result>
+		</action>
+
+		<!-- 更改产品信息 -->
+		<action name="modifyProduct" class="com.demo.actions.ModifyProductAction">
+			<result name="success">/pages/product/productModify.jsp</result>
+			<result name="input">/pages/product/productModify.jsp</result>
+		</action>
+
+		<!-- 根据查询信息查询产品 -->
+		<action name="selectProductByAll" class="com.demo.actions.SelectProductByAllAction">
+			<result name="success">/pages/product/productSelect.jsp</result>
+		</action>
+
+		<!-- 添加供应商信息 -->
+		<action name="addProvider" class="com.demo.actions.AddProviderAction">
+			<result name="success">/pages/provider/providerAdd.jsp</result>
+			<result name="input">/pages/provider/getAllProvider</result>
+		</action>
+
+		<!-- 根据名字获取供应商信息 -->
+		<action name="getByName" class="com.demo.actions.GetProviderByNameAction">
+			<result name="success">/pages/provider/providerModify.jsp</result>
+			<result name="input">/pages/provider/providerModify.jsp</result>
+		</action>
+
+		<!-- 获取所有供应商信息 -->
+		<action name="getAllProvider" class="com.demo.actions.getAllProviderAction">
+			<result name="success">/pages/provider/providerModify.jsp</result>
+			<result name="input">/pages/provider/providerModify.jsp</result>
+		</action>
+
+		<!-- 获取所有供应商信息 -->
+		<action name="getAllProvider1" class="com.demo.actions.getAllProviderAction">
+			<result name="success">/pages/provider/providerSelect.jsp</result>
+			<result name="input">/pages/provider/providerSelect.jsp</result>
+		</action>
+
+		<!-- 查询供应商信息 -->
+		<action name="getAllProviderByAll" class="com.demo.actions.GetProviderByAllAction">
+			<result name="success">/pages/provider/providerSelect.jsp</result>
+			<result name="input">/pages/provider/providerSelect.jsp</result>
+		</action>
+
+		<!-- 修改供应商信息 -->
+		<action name="modifyProvider" class="com.demo.actions.ModifyProviderAction">
+			<result name="success" type="redirect">/pages/provider/getAllProvider
+			</result>
+		</action>
+
+		<!--删除供应商 -->
+		<action name="deleteProvider" class="com.demo.actions.DeleteProviderAction">
+			<result name="success" type="redirect">/pages/provider/getAllProvider1
+			</result>
+			<result name="input" type="redirect">/getAllProvider1</result>
+		</action>
+
+		<!-- 添加订单订单 -->
+		<action name="addOrder" class="com.demo.actions.AddOrderAction">
+			<result name="success" type="redirectAction">pages/order/getAllOrder1
+			</result>
+			<result name="input" type="redirectAction">pages/order/getProductInOrderAdd</result>
+		</action>
+
+		<!-- 获取所有订单 -->
+		<action name="getAllOrder" class="com.demo.actions.GetAllOrderAction">
+			<result name="success">/pages/order/orderModify.jsp</result>
+		</action>
+
+		<!-- 获取所有订单 -->
+		<action name="getAllOrder1" class="com.demo.actions.GetAllOrderAction">
+			<result name="success">/pages/order/orderSelect.jsp</result>
+		</action>
+
+		<!-- 根据ID回去订单 -->
+		<action name="getOrderById" class="com.demo.actions.GetOrderByIdAction">
+			<result name="success">/pages/order/orderModify.jsp</result>
+			<result name="input">/pages/order/orderModify.jsp</result>
+		</action>
+
+		<!-- 获取订单详情 -->
+		<action name="getOrderDetail" class="com.demo.actions.GetOrderDetailAction">
+			<result name="success">/pages/order/order.jsp</result>
+			<result name="input" type="redirect">/pages/order/getAllOrder1</result>
+		</action>
+
+		<!-- 删除订单 -->
+		<action name="deleteOrder" class="com.demo.actions.DeleteOrderAndDetailAction">
+			<result name="success" type="redirect">pages/order/getAllOrder1</result>
+			<result name="input" type="redirect">pages/order/getAllOrder1</result>
+		</action>
+
+	</package>
+</struts>
